@@ -1,5 +1,6 @@
 ﻿using System;
 using OpenQA.Selenium;
+using PruebasConSelenium.Handler;
 
 namespace PruebasConSelenium.PaginaObjetivo
 {
@@ -7,9 +8,7 @@ namespace PruebasConSelenium.PaginaObjetivo
     {
         protected IWebDriver Driver;
 
-        protected By UserInput = By.Id("user");
-        protected By PasswordInput = By.Id("pass");
-        protected By LoginButton = By.Id("loginButton");
+        protected By Formulario = By.Id("formularioPrincipal");
 
         public PrincipalPage(IWebDriver driver)
         {
@@ -19,6 +18,10 @@ namespace PruebasConSelenium.PaginaObjetivo
             if (!Driver.Title.Equals("Inicio"))
                 throw new Exception("No te encuentras en 'Inicio'");
 
+        }
+        public bool FormularioPresente()
+        {
+            return WaitHandler.ElementoPresente(Driver,Formulario);
         }
     }
 }
