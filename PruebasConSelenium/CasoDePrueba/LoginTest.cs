@@ -1,30 +1,24 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using PruebasConSelenium.PaginaObjetivo;
 
 namespace PruebasConSelenium.CasoDePrueba
 {
     [TestFixture]
-    public class LoginTest
+    public class LoginTest : TestBase
     {
-        protected IWebDriver Driver;
 
-        [SetUp]
-        public void BeforeTest()
+        //Con TestCase se pueden automatizar varias formas de los casos de prueba
+        [TestCase("admin", "123456")]
+        [TestCase("admin1", "123456")]
+        [TestCase("admin2", "123456")]
+        public void PruebaLograda(string nombre, string password)
         {
-            Driver = new ChromeDriver();
-            Driver.Navigate().GoToUrl("");
-        }
-        [Test]
-        public void PruebaLograda()
-        {
-            //Login
-        }
-        [TearDown]
-        public void AfterTest()
-        {
-            if(Driver != null)
-                Driver.Quit();
+            Login login = new Login(Driver);
+            PrincipalPage paginaPrincipal = login.LoginAs(nombre, password);
+            //En caso de encontrar el formulario principal se marca como prueba correcta
+            Assert.IsTrue(paginaPrincipal.FormularioPresente());
         }
     }
 }

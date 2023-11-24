@@ -8,14 +8,14 @@ namespace PruebasConSelenium.PaginaObjetivo
     {
         protected IWebDriver Driver;
 
-        protected By Formulario = By.Id("formularioPrincipal");
+        protected By Formulario = By.Id("region-main");
 
         public PrincipalPage(IWebDriver driver)
         {
             Driver = driver;
 
             //Titulo de nuestra página
-            if (!Driver.Title.Equals("Inicio"))
+            if (!Driver.Title.Equals("Campus Virtual Universitario"))
                 throw new Exception("No te encuentras en 'Inicio'");
 
         }

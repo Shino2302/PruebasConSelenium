@@ -4,7 +4,7 @@ using OpenQA.Selenium.DevTools.V117.DOM;
 
 namespace PruebasConSelenium.PaginaObjetivo
 {
-    public class Login
+    public class Login 
     {
         //Driver para uso de Selenium
         protected IWebDriver Driver;
@@ -12,9 +12,9 @@ namespace PruebasConSelenium.PaginaObjetivo
 
         //Con estas variables representaremos los datos dentro
         //de nuestra página
-        protected By UserInput = By.Id("user");
-        protected By PasswordInput = By.Id("pass");
-        protected By LoginButton = By.Id("loginButton");
+        protected By UserInput = By.Name("username");
+        protected By PasswordInput = By.Name("password");
+        protected By LoginButton = By.Id("loginbtn");
 
         //Constructor para indicar en donde comenzaremos la prueba
         public Login(IWebDriver driver)
@@ -22,7 +22,7 @@ namespace PruebasConSelenium.PaginaObjetivo
             Driver = driver;
 
             //Titulo de nuestra página
-            if (!Driver.Title.Equals("Login"))
+            if (!Driver.Title.Equals("Campus Virtual Universitario: Ingresar al sitio"))
                 throw new Exception("No te encuentras en el Login");
 
         }
