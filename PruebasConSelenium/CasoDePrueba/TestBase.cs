@@ -2,12 +2,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using PruebasConSelenium.Handler;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Xsl;
 
 namespace PruebasConSelenium.CasoDePrueba
 {
@@ -15,22 +9,22 @@ namespace PruebasConSelenium.CasoDePrueba
     {
         protected IWebDriver Driver;
 
+
+        //Esta es una Etiqueta de metadatos con la que le indicamos a NUnit
+        //Que hacer antes de la prueba:
         [SetUp]
         public void BeforeTest()
         {
             Driver = new ChromeDriver();
             Driver.Navigate().GoToUrl("http://campusvirtual.uts.edu.mx/login/index.php");
         }
+        //Este es el caso contrario de la anterior y es donde indicamos que hacer
+        //despues del Test
         [TearDown]
         public void AfterTest()
         {
-            var status = TestContext.CurrentContext.Result.Outcome.Status;
-            if (status == NUnit.Framework.Interfaces.TestStatus.Failed)
-                Captura.TomarCaptura(Driver);
-
             if (Driver != null)
                 Driver.Quit();
-
         }
     }
 }

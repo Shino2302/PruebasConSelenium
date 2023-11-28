@@ -14,7 +14,7 @@ namespace PruebasConSelenium.Handler
         {
             long milliseconds = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
 
-            string pathDeImagen = ImagePath + "//img " + milliseconds + ".png";
+            string pathDeImagen = ImagePath + "//img" + milliseconds + ".png";
             Screenshot imagen = ((ITakesScreenshot)driver).GetScreenshot();
             imagen.SaveAsFile(ImagePath, ScreenshotImageFormat.Png);
 
